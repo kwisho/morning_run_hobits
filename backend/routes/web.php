@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TimeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +13,6 @@ use App\Http\Controllers\TimeController;
 |
 */
 
-Route::get('/',[TimeController::class,'index'])->name('times.index');
+Route::get('/',[TimeController::class,'index'])->middleware(['auth'])->name('times,index');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+require __DIR__.'/auth.php';
